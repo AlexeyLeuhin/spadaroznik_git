@@ -1,0 +1,13 @@
+{% extends "main_page/wrapper.html" %}
+
+    {% block content %}
+
+{% for p in profile %}
+    <h3>{{p.avatar}}</h3>
+    <h3>{{p.biography}}</h3>
+    <h3>{{p.location}}</h3>
+    <h3>{{p.birth_date}}</h3>
+not ur
+{% endfor %}
+
+    {% endblock %}

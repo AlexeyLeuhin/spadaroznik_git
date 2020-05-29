@@ -1,0 +1,15 @@
+{% extends "main_page/wrapper.html" %}
+
+{% block content %}
+
+    <form action="{% url 'post_create_url' %}" method="post">
+        {% csrf_token %}
+        <p>Countries that u gonna visit:</p>
+        <p>{{form.countries}}</p>
+        <p>Describe somehow urself and ur future trip:</p>
+        <p>{{form.description}}</p>
+
+        <button type="submit" href="posts/posts.html" >Create Post</button>
+    </form>
+
+{% endblock %}

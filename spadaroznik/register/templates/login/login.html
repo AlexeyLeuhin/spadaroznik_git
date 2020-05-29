@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+
+<head>
+	<title>spadaroznic</title>
+	<link href="{% static "style_login/style.css" %}" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css..">
+    <link href="{% static "style_login/css_reset.css" %}" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css..">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Gallery">
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+
+ <div class="index_fon">
+  <div class="pole_index">
+    <div style="text-align: center;" class="pole_text">
+      Увайсці
+        <div>
+          <form action="{% url 'login_url' %}" method="POST">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                      <p>{{ form.non_field_errors }}</p>
+                    {% endif %}
+                        <p>Usrename:</p>
+                        <p>{{form.username}}</p>
+                        <p>Password:</p>
+                        <p>{{form.password}}</p>
+
+                        <button type="submit">Login</button>
+              </form>
+        </div>
+      <div style="font-size: 20px" class="title">Або</div>
+      <p>Зарегистрируйся парень, не пожалеешь <a href="/register">РЕГАЙСЯ</a></p>
+    </div>
+  </div>
+ </div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,112 @@
+<style>
+
+/*Шо-то там шобы красиво */
+@font-face{font-family: 'Open Sans', sans-serif; src: url(fonts/OpenSans-Regular.ttf); }
+@font-face{font-family: 'Open Sans', sans-serif; src: url(fonts/OpenSans-Bold.ttf); font-weight: 800; }
+body, html, h1, h2, br{margin: 0; }
+body{font-family: 'Open Sans', sans-serif; }
+html { overflow:  hidden; }
+
+html{
+	margin:0px;
+	padding:0px;
+	height: 100%;
+	width: 100%;
+}
+
+
+/*Фоновая картинка главной страницы */
+.index_fon{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;padding:0px;
+	width: 100%;
+	height:100%;
+	background-image: url("../img/../img_login/indexhoi.jpg");
+	background-size: cover;
+	background-position: center;
+}
+/*Поле входа и регистрации на первой странице*/
+.pole_index{
+	margin-top: 4%;
+	margin-left: 8%;
+	width: 30%;
+	height: 74%;
+	background: white;
+	color: black; /* Цвет текста */
+	padding: 20px; /* Поля вокруг текста */
+	border-radius: 15px; /* Уголки */
+}
+.pole_text{
+	float:center;
+	font:20px OpenSans,sans-serif;
+	color: #8E8E8E;
+
+}
+
+hr {
+	border: none; /* Убираем границу */
+	background-color: #6CBD83; /* Цвет линии */
+	color: #6CBD83; /* Цвет линии для IE6-7 */
+	height: 1px; /* Толщина линии */
+}
+.title {
+	/* чтобы линии не выходили за ширину блока заголовка */
+	overflow: hidden;
+	width: 10%
+	height:10px;
+}
+.title:before,
+.title:after {
+	content: '';
+
+	/* делаем линию строчно-блочной */
+	display: inline-block;
+
+	/* выравниваем вертикально по середине */
+	vertical-align: middle;
+
+	/* не позволяем ширине превысить 100% (будет добавлен бордюр) */
+	box-sizing: border-box;
+
+	/* установка ширины в 100% делает линию равной ширине тега заголовка
+	** благодаря этому линия заполнит все свободное пространство
+	** слева и справа от текста
+	*/
+	width: 100%;
+	height: 1px;
+	background: #6CBD83;
+
+	/* добавляем к линии левый и правый бордюр цветом основного фона заголовка
+	** благодаря этому создается нужный отступ между линиями и текстом
+	*/
+	border: solid #FFF;
+	border-width: 0 10px;
+}
+.title:before {
+	/* смещаем левую линию влево отрицательным отступом, равным 100% ширины
+	** благодаря этому линия встает слева от текста
+	*/
+	margin-left: -100%;
+}
+.title:after {
+	/* смещаем правую линию вправо отрицательным отступом, равным 100% ширины
+	** благодаря этому линия встает справа от текста
+	*/
+	margin-right: -100%;
+}
+
+#rectangle {
+	margin: 15px;
+	margin-left: 0px;
+	width: 100%;
+	height: 90px;
+	background: #FBBE2E;
+}
+
+
+
+
+</style>

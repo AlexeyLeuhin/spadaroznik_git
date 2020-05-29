@@ -1,0 +1,11 @@
+{% extends "main_page/wrapper.html" %}
+
+    {% block content %}
+
+{% for post in posts %}
+<a href="/posts/{{post.id}}"><h3>{{post.countries}}</h3></a>
+<a href="/profile/{{post.author.id}}"><h3>{{post.author}}</h3></a>
+<h5>{{post.date|date:"d-m-Y"}}</h5>
+{% endfor %}
+
+    {% endblock %}

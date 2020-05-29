@@ -1,0 +1,70 @@
+<style>	
+
+
+
+@font-face{
+	font-family: 'Open Sans', sans-serif;
+	src: url(fonts/OpenSans-Regular.ttf);
+}
+@font-face{
+	font-family: 'Open Sans', sans-serif;
+	src: url(fonts/OpenSans-Bold.ttf);
+	font-weight: 800;
+}
+body, html, h1, h2, br{	
+	margin: 0;
+
+}
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+
+
+
+html{
+	height: 10000px;
+}
+
+.textlogo{
+color: white;
+text-align: center;
+margin-top: 10px;
+font-size: 30px;
+}
+
+.textlogin{
+color: #717171;
+text-align: center;
+margin-top: 10px;
+font-size: 30px;
+}
+
+.body{
+background-color: #F9F9FA;
+}
+
+.index_gor{
+width:auto;
+height:70px;
+background-color: black;
+text-decoration: white;
+position: sticky;
+top: 0;
+}
+
+.login{
+	border-radius: 10px;
+	background-color:#FFFFFF;
+	height: 500px;
+	width: 500px;
+	margin-left: auto;
+    margin-right: auto;
+	margin-top: 10px;
+	border: 2px;
+	border-color: black;
+    border: 2px solid #D0D0D2; /* Параметры границы */
+    padding: 10px; /* Поля вокруг текста */
+   
+}
+
+</style>
