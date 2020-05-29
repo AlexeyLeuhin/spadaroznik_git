@@ -15,5 +15,4 @@ urlpatterns = [
     path('posts/<int:pk>/', posts_views.PostDetail.as_view()),
     path('profile/<int:pk>/', profile_views.show_profile),
     path('profile/redact/', profile_views.ProfileRedact.as_view(), name="profile_redact_url"),
-
 ]
