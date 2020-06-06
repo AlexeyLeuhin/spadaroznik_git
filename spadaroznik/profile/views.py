@@ -7,6 +7,7 @@ from django.views.generic import View
 from .forms import ProfileRedactForm
 
 
+
 def show_profile(request, pk):
     if not request.user.is_authenticated:
         form = SignUpForm()

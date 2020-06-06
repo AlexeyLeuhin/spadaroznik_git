@@ -2,8 +2,8 @@ from django import forms
 
 
 class ProfileRedactForm(forms.Form):
-    biography = forms.CharField(required=False)
-    location = forms.CharField(required=False)
+    biography = forms.CharField(required=True)
+    location = forms.CharField(required=True)
     birth_date = forms.DateField(required=False)
     #avatar = forms.ImageField(required=False)
 

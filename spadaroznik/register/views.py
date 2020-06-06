@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from .forms import SignUpForm, LoginForm
+from profile import views as profile_views
 from django.views.generic import View
 from django.contrib.auth import authenticate, login as auth_login
 
@@ -28,7 +31,9 @@ def login(request):
             if user is not None:
                 if user.is_active:
                     auth_login(request, user)
-                    return redirect("/")
+                    return redirect(reverse("profile_redact_url"))
     else:
         form = LoginForm()
     return render(request, 'login/login.html', {'form': form})
+
+
