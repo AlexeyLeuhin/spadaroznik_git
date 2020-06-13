@@ -1,9 +1,11 @@
 from django.contrib import admin
+from django.conf.urls.static import static
 from django.urls import path
 from main_page import views as main_page_views
 from register import views as register_views
 from posts import views as posts_views
 from profile import views as profile_views
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,4 +17,4 @@ urlpatterns = [
     path('posts/<int:pk>/', posts_views.PostDetail.as_view()),
     path('profile/<int:pk>/', profile_views.show_profile),
     path('profile/redact/', profile_views.ProfileRedact.as_view(), name="profile_redact_url"),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

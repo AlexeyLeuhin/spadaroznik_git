@@ -1,12 +1,14 @@
 {% extends "main_page/wrapper.html" %}
+{% load static %}
 
     {% block content %}
 
-{% for p in profile %}
-    <img src="{{p.avatar.url}}">
-    <h3>{{p.biography}}</h3>
-    <h3>{{p.location}}</h3>
-    <h3>{{p.birth_date}}</h3>
-{% endfor %}
+        {% csrf_token %}
+        <img src="{{ profile.avatar.url }}">
+        <p>{{profile.biography}}</p>
+        <h3>{{profile.location}}</h3>
+        <h3>{{profile.birth_date|date:"d-m-Y"}}</h3>
+        <a href="{% url 'profile_redact_url' %}" >Change</a>
+
 
     {% endblock %}

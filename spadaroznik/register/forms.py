@@ -13,25 +13,25 @@ class SignUpForm(forms.Form):
         password = self.cleaned_data['password']
         password_verify = self.cleaned_data['password_verify']
         if password != password_verify:
-            raise forms.ValidationError(u'Passwords dont match')
+            raise forms.ValidationError(u'Пароли не совпадают.')
         elif len(password) < 8:
-            raise forms.ValidationError(u'Password should be 8 symbols length at least')
+            raise forms.ValidationError(u'Пароль должен быть длиной не менее 8 символов.')
         else:
             return password_verify
 
     def clean_username(self):
         new_usname = self.cleaned_data['username']
         if User.objects.filter(username=new_usname).exists():
-            raise forms.ValidationError(u'Username "%s" is already in use.' % new_usname)
+            raise forms.ValidationError(u'Имя пользователя "%s" уже используется.' % new_usname)
         else:
             return new_usname
 
     def clean_email(self):
         email = self.cleaned_data['email']
         if '@'not in email:
-            raise forms.ValidationError(u'Not valid email, the field should contain @ symbol')
+            raise forms.ValidationError(u'Неверный email, поле должно содержать символ @')
         elif email.endswith('@'):
-            raise forms.ValidationError(u'Adress is not full, it should contain domain name after @')
+            raise forms.ValidationError(u'Адрес электронной почты неверный.')
         else:
             return email
 
@@ -50,7 +50,7 @@ class LoginForm(forms.Form):
         cd = self.cleaned_data
         user = authenticate(username=cd['username'], password=cd['password'])
         if user is None:
-            raise forms.ValidationError(u'Invalid username of password')
+            raise forms.ValidationError(u'Неверное имя пользователя или пароль')
         return cd
 
 
