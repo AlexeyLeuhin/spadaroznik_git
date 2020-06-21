@@ -2,13 +2,14 @@ from urllib import request
 from django import forms
 from django.core.files.images import get_image_dimensions
 
+from spadaroznik import settings
 from spadaroznik.settings import BASE_DIR
 
 
 class ProfileRedactForm(forms.Form):
     biography = forms.CharField(required=True)
     location = forms.CharField(required=True)
-    birth_date = forms.DateField(required=False)
+    birth_date = forms.DateField(required=False, input_formats=settings.DATE_INPUT_FORMATS)
     avatar = forms.ImageField(required=False)
 
     def clean_avatar(self):

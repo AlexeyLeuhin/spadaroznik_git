@@ -5,6 +5,7 @@
 
         {% csrf_token %}
         <img src="{{ profile.avatar.url }}">
+        <a href="{% url 'write_button_handler' pk%}" >Написать</a>
         <p>{{profile.biography}}</p>
         <h3>{{profile.location}}</h3>
         <h3>{{profile.birth_date|date:"d-m-Y"}}</h3>

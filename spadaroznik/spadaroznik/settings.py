@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+DATE_INPUT_FORMATS = ('%d-%m-%Y','%Y-%m-%d')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -33,6 +33,8 @@ INSTALLED_APPS = [
     'register',
     'posts',
     'profile',
+    'chats',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -71,7 +73,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'spadaroznik.wsgi.application'
-
+ASGI_APPLICATION = 'spadaroznik.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 

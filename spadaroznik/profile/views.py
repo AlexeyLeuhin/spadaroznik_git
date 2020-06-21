@@ -1,4 +1,6 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from chats.models import Chat, Message
 from register.forms import SignUpForm
 from .models import Profile
 from django.contrib.auth.models import User
@@ -16,7 +18,7 @@ def show_profile(request, pk):
     if request.user == curr_us:
         return render(request, 'profile/ur_profile.html', context={'profile': profile})
     else:
-        return render(request, 'profile/not_ur_profile.html', context={'profile': profile})
+        return render(request, 'profile/not_ur_profile.html', context={'profile': profile, 'pk': pk})
 
 
 class ProfileRedact(View):
@@ -36,3 +38,21 @@ class ProfileRedact(View):
             profile = get_object_or_404(Profile, user=user)
             return render(request, 'profile/ur_profile.html', context={'profile': profile})
         return render(request, 'profile/ur_profile_redact.html', context={'form': bound_form})
+
+
+@login_required(login_url='login_url')
+def write_button_handler(request, pk):
+    curr_us = get_object_or_404(User, id=pk)
+    chat = Chat.objects.filter(members=curr_us).filter(members=request.user)
+    messages = []
+    if len(chat) > 0:
+        chat = chat[0]
+        messages = Message.objects.filter(chat=chat)
+    else:
+        chat = Chat()
+        chat.save()
+        chat.members.add(curr_us)
+        chat.members.add(request.user)
+        chat.save()
+    return render(request, 'chats/room.html', context={'messages': messages, 'room_name': str(chat.id)})
+
