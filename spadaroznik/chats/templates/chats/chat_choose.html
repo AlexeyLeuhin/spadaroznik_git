@@ -1,26 +1,42 @@
+{% load tz %}
+{% load i18n %}
+{% load custom_library %}
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8"/>
     <title>Chat Rooms</title>
 </head>
 <body>
-    What chat room would you like to enter?<br>
-    <input id="room-name-input" type="text" size="100"><br>
-    <input id="room-name-submit" type="button" value="Enter">
-
-    <script>
-        document.querySelector('#room-name-input').focus();
-        document.querySelector('#room-name-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#room-name-submit').click();
-            }
-        };
-
-        document.querySelector('#room-name-submit').onclick = function(e) {
-            var roomName = document.querySelector('#room-name-input').value;
-            window.location.pathname = '/chats/' + roomName + '/';
-        };
-    </script>
+    {% if chats.count == 0 %}
+            <div class="panel panel-body">{% trans "Нет ни одного начатого диалога" %}</div>
+    {% endif %}
+    {% for chat in chats %}
+        {% if chat.message_set.count != 0 %}
+            {% with last_message=chat.message_set.last %}
+                {% get_companion user chat as companion %}
+                 <a  href="{{ chat.get_absolute_url }}">
+                    <img src="{{ companion.profile.avatar.url }}">
+                    <div>
+                        <ul>
+                            <li>
+                                <strong>{{ companion.username }}</strong>
+                            </li>
+                             <li><small>{{ last_message.pub_date|utc }}</small></li>
+                        </ul>
+                        {% if companion != last_message.author %}
+                                <div>
+                                    <img src="{{ last_message.author.profile.avatar.url }}">
+                                    <div>{{ last_message.message|truncatechars_html:"200"|safe|striptags }}</div>
+                                </div>
+                            {% else %}
+                                <div>{{ last_message.message|truncatechars_html:"200"|safe|striptags }}</div>
+                            {% endif %}
+                    </div>
+                 </a>
+            {% endwith %}
+        {% endif %}
+    {% endfor %}
 </body>
 </html>

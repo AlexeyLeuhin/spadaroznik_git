@@ -6,6 +6,9 @@ from django.db import models
 class Chat(models.Model):
     members = models.ManyToManyField(User)
 
+    def get_absolute_url(self):
+        return f'{str(self.id)}'
+
 
 class Message(models.Model):
     chat = models.ForeignKey(Chat, on_delete=models.SET_NULL, null=True)
